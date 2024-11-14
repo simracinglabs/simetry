@@ -232,6 +232,10 @@ pub trait Moment {
     fn pedals_raw(&self) -> Option<Pedals> {
         self.pedals()
     }
+
+    fn lap_distance(&self) -> Option<f64> {
+        None
+    }
 }
 
 /// Percentage values of pedal inputs.

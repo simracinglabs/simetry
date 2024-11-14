@@ -127,6 +127,10 @@ impl Moment for SimState {
             clutch: 1.0 - self.read_name::<f32>("ClutchRaw")? as f64,
         })
     }
+
+    fn lap_distance(&self) -> Option<f64> {
+        self.read_name("LapDistPct")
+    }
 }
 
 impl Debug for SimState {

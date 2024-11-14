@@ -42,8 +42,9 @@ impl Client {
                 // Retry until we are sure we didn't catch shared memory mid-write
                 continue;
             }
-            if r3e_shared.version_major != bindings::R3E_VERSION_MAJOR
-                || r3e_shared.version_minor < bindings::R3E_VERSION_MINOR
+            // On linux and windows these are i32 and u32 respectively so we need to cast so it compiles correctly on both
+            if (r3e_shared.version_major as u32) != (bindings::R3E_VERSION_MAJOR as u32)
+                || (r3e_shared.version_minor as u32) < (bindings::R3E_VERSION_MINOR as u32)
             {
                 let major = r3e_shared.version_major;
                 let minor = r3e_shared.version_minor;
